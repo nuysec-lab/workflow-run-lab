@@ -1,0 +1,12 @@
+name: REL f2-singlestar
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: ['*']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Marker
+        run: echo "REL f2-singlestar FIRED head_branch=${{ github.event.workflow_run.head_branch }} event=${{ github.event.workflow_run.event }}"
