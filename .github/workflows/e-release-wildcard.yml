@@ -1,0 +1,13 @@
+name: Create release WILDCARD
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: ['**']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Marker
+        run: |
+          echo "WILDCARD release triggered head_branch=${{ github.event.workflow_run.head_branch }} event=${{ github.event.workflow_run.event }}"
