@@ -1,0 +1,12 @@
+name: REL renovate sibling
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: ['renovate/**']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Marker
+        run: echo "SIBLING renovate/** FIRED head_branch=${{ github.event.workflow_run.head_branch }}"
