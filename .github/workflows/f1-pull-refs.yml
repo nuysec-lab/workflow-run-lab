@@ -1,0 +1,12 @@
+name: REL f1-pull-refs
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: ['refs/pull/**']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Marker
+        run: echo "REL f1-pull-refs FIRED head_branch=${{ github.event.workflow_run.head_branch }} event=${{ github.event.workflow_run.event }}"
