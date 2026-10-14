@@ -1,0 +1,12 @@
+name: REL g1-control-test
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: ['control-test']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Marker
+        run: echo "G1 SAME-REPO MATCH FIRED head_branch=${{ github.event.workflow_run.head_branch }}"
