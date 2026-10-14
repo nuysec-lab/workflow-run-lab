@@ -1,0 +1,12 @@
+name: Create release NOFILTER
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Marker
+        run: |
+          echo "NOFILTER release triggered head_branch=${{ github.event.workflow_run.head_branch }} event=${{ github.event.workflow_run.event }}"
