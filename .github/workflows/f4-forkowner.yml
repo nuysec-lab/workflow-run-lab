@@ -1,0 +1,12 @@
+name: REL f4-forkowner
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: ['LostInPackets/**']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Marker
+        run: echo "REL f4-forkowner FIRED head_branch=${{ github.event.workflow_run.head_branch }} event=${{ github.event.workflow_run.event }}"
