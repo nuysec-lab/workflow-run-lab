@@ -1,0 +1,12 @@
+name: REL f6-heads-main
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches: ['refs/heads/main']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Marker
+        run: echo "REL f6-heads-main FIRED head_branch=${{ github.event.workflow_run.head_branch }} event=${{ github.event.workflow_run.event }}"
