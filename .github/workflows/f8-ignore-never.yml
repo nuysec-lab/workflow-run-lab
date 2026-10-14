@@ -1,0 +1,12 @@
+name: REL f8-ignore-never
+on:
+  workflow_run:
+    workflows: [Build]
+    types: [completed]
+    branches-ignore: ['zzz-never-matches']
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Marker
+        run: echo "REL f8-ignore-never FIRED head_branch=${{ github.event.workflow_run.head_branch }} event=${{ github.event.workflow_run.event }}"
